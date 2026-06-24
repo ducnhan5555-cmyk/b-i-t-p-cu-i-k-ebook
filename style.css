@@ -1,0 +1,357 @@
+/* ==========================================================================
+   1. CẤU HÌNH BIẾN MÀU SẮC (Hỗ trợ Dark Mode) VÀ RESET CSS
+   ========================================================================== */
+:root {
+    /* Chế độ sáng mặc định */
+    --bg-primary: #f8f9fa;
+    --bg-surface: #ffffff;
+    --bg-card: #f1f3f5;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --accent-color: #0d6efd;
+    --accent-hover: #0b5ed7;
+    --border-color: #dee2e6;
+    --shadow: rgba(0, 0, 0, 0.05);
+}
+
+/* Thừa hưởng cấu hình khi chuyển sang chế độ tối */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-surface: #1e293b;
+    --bg-card: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-color: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --border-color: #334155;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==========================================================================
+   2. THANH MENU ĐIỀU HƯỚNG (HEADER)
+   ========================================================================== */
+header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px var(--shadow);
+}
+
+.header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo a {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--accent-color);
+}
+
+.btn-toggle {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.btn-toggle:hover {
+    background-color: var(--border-color);
+}
+
+/* ==========================================================================
+   3. TRUYỆN NỔI BẬT (HERO BANNER)
+   ========================================================================== */
+.featured-section {
+    padding: 40px 0;
+}
+
+.featured-card {
+    background: linear-gradient(135deg, #1e1b4b 0%, #311042 100%);
+    border-radius: 16px;
+    padding: 40px;
+    color: #ffffff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.featured-content {
+    max-width: 600px;
+}
+
+.badge {
+    background-color: #ef4444;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.featured-content h1 {
+    font-size: 32px;
+    margin: 15px 0 5px 0;
+    font-weight: 700;
+}
+
+.featured-content .author {
+    color: #cbd5e1;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.featured-content .summary {
+    color: #e2e8f0;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.tag {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.btn-read {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.btn-read:hover {
+    background-color: var(--accent-hover);
+}
+
+/* ==========================================================================
+   4. BỐ CỤC CHÍNH CHIA CỘT (MAIN LAYOUT)
+   ========================================================================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* Danh sách truyện dạng lưới (Cột trái) */
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.story-card {
+    display: flex;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    gap: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.story-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.story-thumbnail {
+    font-size: 36px;
+    background-color: var(--bg-card);
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.story-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.story-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.story-info h3 a:hover {
+    color: var(--accent-color);
+}
+
+.story-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.story-genre {
+    align-self: flex-start;
+    background-color: var(--bg-card);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+/* Bảng xếp hạng (Cột phải) */
+.top-ranking-list {
+    list-style: none;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.top-ranking-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.top-ranking-list li:last-child {
+    border-bottom: none;
+}
+
+.rank-number {
+    font-size: 16px;
+    font-weight: 700;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--bg-card);
+}
+
+.rank-1 {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.top-ranking-list li a {
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-ranking-list li a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   5. CHÂN TRANG (FOOTER)
+   ========================================================================== */
+footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    padding: 30px 0;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+footer p:last-child {
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+/* Cấu hình tương thích màn hình điện thoại (Responsive) */
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+    .story-grid {
+        grid-template-columns: 1fr;
+    }
+    .header-box {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 0;
+        gap: 10px;
+    }
+    nav ul {
+        gap: 15px;
+    }
+}
